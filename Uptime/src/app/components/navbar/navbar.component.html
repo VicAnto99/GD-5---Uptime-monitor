@@ -1,0 +1,17 @@
+<nav class="navbar navbar-dark bg-primary">
+    <div class="container-fluid">
+        <a class="navbar-brand" routerLink="/info">
+        <img src="https://www.worldtimeserver.com/img/dst/dst-2-3.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
+        UPTIME MONITOR
+        </a>
+        <div *ngIf="userLogged|async as user">
+            <a class="navbar-brand" routerLink="/user">
+                <img style="border-radius: 100%;" [src]="user.photoURL" alt="" width="30" height="24" class="d-inline-block align-text-top">
+                {{user.email}}
+            </a>
+            <button class="btn btn-secondary btn-sm m-1" routerLink="/record">RECORD</button>
+            <button class="btn btn-secondary btn-sm" routerLink="/setup">SET UP UPTIME</button>
+            <button class="btn btn-danger btn-sm m-1" (click)="salir()" routerLink="/login">LOGOUT</button>
+        </div>
+    </div>
+</nav>

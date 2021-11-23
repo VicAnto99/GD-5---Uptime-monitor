@@ -1,0 +1,18 @@
+<div class="container m-5">
+    <div class="card text-center">
+        <div class="card-header">
+          <b>LOGIN</b>
+        </div>
+        <div class="card-body p-4">
+            <div class="input-group input-group-lg m-3">
+                <span class="input-group-text" id="inputGroup-sizing-lg">Email</span>
+                <input type="email" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" placeholder="Type your email" [(ngModel)]="user.email">
+            </div>
+            <div class="input-group input-group-lg m-3">
+                <span class="input-group-text" id="inputGroup-sizing-lg">Password</span>
+                <input type="password" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" placeholder="Type your password" [(ngModel)]="user.password">
+            </div>
+            <button class="btn btn-info btn-block m-1" (click)="ingresarGoogle()" routerLink="/record">LOGIN WITH GOOGLE</button>
+        </div>
+    </div>
+</div>
