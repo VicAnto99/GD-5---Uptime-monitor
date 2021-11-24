@@ -37,6 +37,10 @@ const envioCorreo = (req = request, resp = response) => {
 const correoTiempo = () => {
     cron.schedule('1-5 * * * *', () => {
         console.log('running task every minute');
+        return json({
+            ok: true,
+            msg: result
+        });
     });
 }
 
