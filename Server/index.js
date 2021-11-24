@@ -7,6 +7,8 @@ app.use(cors());
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({extended:false}));
 
+app.use(require('./routes/correo.routes'));
+
 app.listen('3000', () => {
     console.log('¡Servidor lsito! :)');
 });
