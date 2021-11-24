@@ -18,7 +18,7 @@ const envioCorreo = (req = request, resp = response) => {
         from: "a01339529@gmail.com",
         subject: "Uptime monitor",
         to: "A01339529@tec.mx",
-        text: "Prueba 1"
+        text: "Vamos a ver que tal funciona esta cosa"
     };
 
     config.sendMail(opciones, function(err, result){
