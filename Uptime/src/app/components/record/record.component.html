@@ -6,6 +6,7 @@
             <table class="table mt-3 table-striped">
                 <thead>
                   <tr>
+                    <th scope="col">NAME</th>
                     <th scope="col">URL</th>
                     <th scope="col">ESTADO</th>
                     <th scope="col">TIME</th>
@@ -13,23 +14,12 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>Google.com</td>
-                    <td>ON</td>
-                    <td>11/11/2021</td>
-                    <th><i class="far fa-trash-alt fa-lg text-danger"></i></th>
-                  </tr>
-                  <tr>
-                    <td>Tec.com</td>
-                    <td>ON</td>
-                    <td>11/11/2021</td>
-                    <th><i class="far fa-trash-alt fa-lg text-danger"></i></th>
-                  </tr>
-                  <tr>
-                    <td>Facebook.com</td>
-                    <td>ON</td>
-                    <td>11/11/2021</td>
-                    <th><i class="far fa-trash-alt fa-lg text-danger"></i></th>
+                  <tr *ngFor="let records of record">
+                    <td>{{records.name}}</td>
+                    <td>{{records.url}}</td>
+                    <td>{{records.estado}}</td>
+                    <td>{{records.dateCreate.toDate() | date: 'medium'}}</td>
+                    <th><i (click)="deleteRecord(records.id)"class="far fa-trash-alt fa-lg text-danger"></i></th>
                   </tr>
                 </tbody>
               </table>
