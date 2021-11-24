@@ -2,6 +2,8 @@ const { turquoise } = require('color-name');
 const { request, response } = require('express');
 const nodeMailer = require('nodemailer');
 
+var cron = require('node-cron');
+
 const envioCorreo = (req = request, resp = response) => {
     let body = req.body;
 
@@ -32,6 +34,13 @@ const envioCorreo = (req = request, resp = response) => {
     });
 }
 
+const correoTiempo = () => {
+    cron.schedule('1-5 * * * *', () => {
+        console.log('running task every minute');
+    });
+}
+
 module.exports = {
-    envioCorreo
+    envioCorreo,
+    correoTiempo
 }
