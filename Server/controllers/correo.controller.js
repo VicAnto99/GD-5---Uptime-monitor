@@ -6,7 +6,7 @@ const envioCorreo = (req = request, resp = response) => {
     let body = req.body;
 
     let config = nodeMailer.createTransport({
-        host: 'Hostmail',
+        host: 'Hotmail',
         post: 587,
         auth:{
             user: "A01339529@tec.mx",
@@ -15,7 +15,7 @@ const envioCorreo = (req = request, resp = response) => {
     });
 
     const opciones = {
-        from: "",
+        from: "A01339529@tec.mx",
         subject: "Uptime monitor",
         to: "A01339529@tec.mx",
         text: "Prueba 1"
