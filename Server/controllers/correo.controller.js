@@ -23,28 +23,22 @@ const envioCorreo = (req = request, resp = response) => {
         text: "Vamos a ver que tal funciona esta cosa"
     };
 
-    config.sendMail(opciones, function(err, result){
+    const correoTiempo = () => {
+        cron.schedule('1-5 * * * *', () => {
+            console.log('running task every minute');
+            config.sendMail(opciones, function(err, result){
 
-        if (err) return resp.json({ok: false, msg: err});
-
-        return resp.json({
-            ok: true,
-            msg: result
+                if (err) return resp.json({ok: false, msg: err});
+        
+                return resp.json({
+                    ok: true,
+                    msg: result
+                });
+            });
         });
-    });
-}
-
-const correoTiempo = () => {
-    cron.schedule('1-5 * * * *', () => {
-        console.log('running task every minute');
-        return json({
-            ok: true,
-            msg: result
-        });
-    });
+    }
 }
 
 module.exports = {
-    envioCorreo,
-    correoTiempo
+    envioCorreo
 }
