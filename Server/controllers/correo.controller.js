@@ -7,15 +7,15 @@ const envioCorreo = (req = request, resp = response) => {
 
     let config = nodeMailer.createTransport({
         host: 'smtp.gmail.com',
-        post: 587,
+        post: 456,
         auth:{
-            user: "A01339529@tec.mx",
-            pass: "Man09IjJcnV#07"
+            user: "a01339529@gmail.com",
+            pass: "Mmichela99#"
         }
     });
 
     const opciones = {
-        from: "A01339529@tec.mx",
+        from: "a01339529@gmail.com",
         subject: "Uptime monitor",
         to: "A01339529@tec.mx",
         text: "Prueba 1"
