@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { SetupService } from 'src/app/services/setup.service';
 import { ToastrService } from 'ngx-toastr';
 import { RecordService } from 'src/app/services/record.service';
+import { CronJob } from 'cron';
 
 declare var M: any;
 
@@ -19,17 +20,29 @@ export class SetupComponent implements OnInit {
   load = false;
   setUp_firebase: any[] = [];
   record: any[] = [];
+  cronJob: CronJob;
 
   constructor(private fb: FormBuilder, private setUpService: SetupService, private router: Router, private toastr: ToastrService, private recordService: RecordService) {
     this.createSetUp = this.fb.group({
       name: ['', Validators.required],
       url: ['', Validators.required]
     });
+    this.cronJob = new CronJob('0 0 5 * * *', async () => {
+      try {
+        await this.prueba();
+      } catch (e) {
+        console.error(e);
+      }
+    });
    }
+  prueba(){
+    console.log("hila")
+  }
 
   ngOnInit(): void {
     this.getSetUp();
     this.getRecord();
+    this.cronJob.start();
   }
 
   addSetUp(){
@@ -39,6 +52,7 @@ export class SetupComponent implements OnInit {
       this.load = false;
       return;
     }
+    
     const setUp: any = {
       name: this.createSetUp.value.name,
       url: this.createSetUp.value.url,
